@@ -7,16 +7,12 @@ import xbmcplugin
 import xbmcaddon
 import simplejson as json
 import urllib2
-import urlparse
 from urlparse import urljoin
 
 addon_handle = int(sys.argv[1])
 settings = xbmcaddon.Addon('plugin.video.epgremote')
-args = urlparse.parse_qs(sys.argv[2][1:])
 
 xbmcplugin.setContent(addon_handle, 'movies')
-
-mode = args.get('mode', None)
 
 def addList(video):
     li = xbmcgui.ListItem(video['title'])
@@ -35,9 +31,6 @@ def addList(video):
     xbmcplugin.addDirectoryItem(handle=addon_handle, url=video['url'], listitem=li)
 
 if __name__ == '__main__':
-    print 'aiueo'
-    print mode
-
     server_url = settings.getSetting('server_url')
     recorded_length = settings.getSetting('recorded_length')
 
