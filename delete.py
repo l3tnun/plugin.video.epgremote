@@ -30,6 +30,7 @@ if __name__ == '__main__' and len(sys.argv) == 3:
             xbmc.log('Failed to delete recoded file: %s' % videoId, level=xbmc.LOGERROR)
             progress.close()
             xbmcgui.Dialog().ok(xbmc.getLocalizedString(16205), xbmc.getLocalizedString(16206))
+            xbmc.executebuiltin('Container.Refresh')
             sys.exit(1)
 
         xbmc.executebuiltin('Container.Refresh') #list 更新
